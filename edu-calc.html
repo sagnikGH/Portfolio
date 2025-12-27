@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCalc | Project Details</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #c0c0c0;
+            --accent: #ff00ff;
+            --code-bg: #0d0d0d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+    max-width: 1200px; /* Increased from 1000px for a wider feel */
+    margin: 0 auto;
+    padding: 0 40px; /* Added more side padding for large screens */
+} { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Back Button */
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .tags { display: flex; gap: 10px; margin-bottom: 30px; }
+        .tags span {
+            background: rgba(255, 0, 255, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+        }
+
+        .description { margin-bottom: 40px; color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* Code Block Container */
+        .code-container {
+            position: relative;
+            background: var(--code-bg);
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: #252525;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-header span { font-family: monospace; font-size: 0.9rem; color: #888; }
+
+        .copy-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .copy-btn:hover { background: #fff; }
+
+        pre {
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #dcdcaa; /* Traditional code color */
+        }
+
+        /* Syntax highlighting feel */
+        .keyword { color: #569cd6; }
+        .comment { color: #6a9955; }
+        .string { color: #ce9178; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="projects.html" class="back-link">← Back to Projects</a>
+
+    <header>
+        <h1>EduCalc Predictor</h1>
+        <div class="tags">
+            <span>JAVA</span>
+            <span>ICSE LOGIC</span>
+            <span>ALGORITHM</span>
+        </div>
+    </header>
+
+    <section class="description">
+        <p>This project is a Java-based utility designed specifically for Class 10 ICSE students. It implements the <strong>"Best of Five"</strong> rule used by the Board to calculate percentages, including the compulsory English paper logic.</p>
+    </section>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>EduCalc.java</span>
+            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+        </div>
+        <pre id="code-content">
+<span class="keyword">import</span> java.util.*;
+
+<span class="comment">// ICSE Percentage Predictor Logic</span>
+<span class="keyword">public class</span> EduCalc {
+    <span class="keyword">public static void</span> main(String[] args) {
+        Scanner sc = <span class="keyword">new</span> Scanner(System.in);
+
+        <span class="comment">// Compulsory Subject: English</span>
+        System.out.print(<span class="string">"Enter English Marks: "</span>);
+        <span class="keyword">int</span> eng = sc.nextInt();
+
+        <span class="keyword">int</span>[] otherSubjects = <span class="keyword">new</span> <span class="keyword">int</span>[5];
+        <span class="comment">// Input other 5 subjects</span>
+        <span class="keyword">for</span>(<span class="keyword">int</span> i=0; i < 5; i++) {
+            System.out.print(<span class="string">"Enter Subject "</span> + (i+1) + <span class="string">" marks: "</span>);
+            otherSubjects[i] = sc.nextInt();
+        }
+
+        Arrays.sort(otherSubjects);
+
+        <span class="comment">// Best of 5 Logic: English + Top 4 others</span>
+        <span class="keyword">int</span> total = eng;
+        <span class="keyword">for</span>(<span class="keyword">int</span> i=4; i >= 1; i--) {
+            total += otherSubjects[i];
+        }
+
+        <span class="keyword">double</span> percentage = total / 5.0;
+        System.out.println(<span class="string">"Your ICSE Percentage is: "</span> + percentage + <span class="string">"%"</span>);
+    }
+}
+</pre>
+    </div>
+</div>
+
+<script>
+    function copyCode() {
+        const code = document.getElementById('code-content').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy Code', 2000);
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtmosWeather | Project Details</title>
+    <style>
+        :root { --bg-color: #121212; --accent: #ff00ff; --code-bg: #0d0d0d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: #f0f0f0; line-height: 1.6; }
+        .container {
+    max-width: 1200px; /* Increased from 1000px for a wider feel */
+    margin: 0 auto;
+    padding: 0 40px; /* Added more side padding for large screens */
+} { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .back-link { color: var(--accent); text-decoration: none; display: inline-block; margin-bottom: 20px; }
+        .code-container { background: var(--code-bg); border-radius: 8px; border: 1px solid #333; overflow: hidden; margin-top: 20px;}
+        .code-header { background: #252525; padding: 10px 20px; display: flex; justify-content: space-between; }
+        pre { padding: 20px; overflow-x: auto; font-family: monospace; color: #9cdcfe; }
+        .keyword { color: #c586c0; }
+        .string { color: #ce9178; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="projects.html" class="back-link">← Back to Projects</a>
+    <h1>AtmosWeather</h1>
+    <p style="color: #c0c0c0;">Fetching real-time weather data using Fetch API and OpenWeatherMap.</p>
+    <div class="code-container">
+        <div class="code-header"><span>weather.js</span><button style="cursor:pointer" onclick="alert('Copied!')">Copy</button></div>
+        <pre>
+<span class="keyword">async function</span> <span class="function">getWeather</span>(city) {
+    <span class="keyword">const</span> apiKey = <span class="string">"your_api_key_here"</span>;
+    <span class="keyword">const</span> url = <span class="string">`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`</span>;
+
+    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(url);
+    <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+
+    console.<span class="function">log</span>(<span class="string">`Temperature in ${city}: ${data.main.temp}K`</span>);
+}
+</pre>
+    </div>
+</div>
+</body>
+</html>

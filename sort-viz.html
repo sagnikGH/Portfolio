@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SortViz | Project Details</title>
+    <style>
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --text-primary: #f0f0f0; --accent: #ff00ff; --code-bg: #0d0d0d; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; }
+        .container {
+    max-width: 1200px; /* Increased from 1000px for a wider feel */
+    margin: 0 auto;
+    padding: 0 40px; /* Added more side padding for large screens */
+} { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .back-link { color: var(--accent); text-decoration: none; display: inline-block; margin-bottom: 20px; font-weight: 600; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .tags { display: flex; gap: 10px; margin-bottom: 30px; }
+        .tags span { background: rgba(255, 0, 255, 0.1); color: var(--accent); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; border: 1px solid var(--accent); }
+        .code-container { position: relative; background: var(--code-bg); border-radius: 8px; border: 1px solid #333; overflow: hidden; }
+        .code-header { background: #252525; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .copy-btn { background: var(--accent); color: #000; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        pre { padding: 20px; overflow-x: auto; font-family: 'Fira Code', monospace; font-size: 0.9rem; color: #d4d4d4; }
+        .keyword { color: #569cd6; }
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="projects.html" class="back-link">← Back to Projects</a>
+    <header>
+        <h1>SortViz</h1>
+        <div class="tags"><span>JAVA</span><span>ALGORITHMS</span><span>VISUALIZATION</span></div>
+    </header>
+    <p style="margin-bottom: 30px; color: #c0c0c0;">A tool to visualize how sorting algorithms work. This uses the standard <strong>Bubble Sort</strong> algorithm taught in the ICSE curriculum but adds a graphical layer.</p>
+    <div class="code-container">
+        <div class="code-header"><span>BubbleSort.java</span><button class="copy-btn" onclick="copyCode()">Copy Code</button></div>
+        <pre id="code-content">
+<span class="keyword">public void</span> <span class="function">bubbleSort</span>(<span class="keyword">int</span>[] arr) {
+    <span class="keyword">int</span> n = arr.length;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i < n - 1; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = 0; j < n - i - 1; j++) {
+            <span class="comment">// ICSE logic: compare adjacent elements</span>
+            <span class="keyword">if</span> (arr[j] > arr[j + 1]) {
+                <span class="comment">// Swap elements</span>
+                <span class="keyword">int</span> temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                <span class="comment">// In SortViz, we trigger a UI update here</span>
+                updateVisuals();
+            }
+        }
+    }
+}
+</pre>
+    </div>
+</div>
+<script>
+    function copyCode() {
+        const code = document.getElementById('code-content').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            alert('Code copied to clipboard!');
+        });
+    }
+</script>
+</body>
+</html>

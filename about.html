@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Sagnik.dev</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #c0c0c0;
+            --accent: #ff00ff;
+            --accent-hover: #ff66ff;
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+    max-width: 1200px; /* Increased from 1000px for a wider feel */
+    margin: 0 auto;
+    padding: 0 40px; /* Added more side padding for large screens */
+} {
+    max-width: 1200px; /* Increased from 1000px for a wider feel */
+    margin: 0 auto;
+    padding: 0 40px; /* Added more side padding for large screens */
+} { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation - Matches index.html exactly */
+        header {
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background-color: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
+
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { color: var(--text-primary); text-decoration: none; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+
+        /* About Section UI */
+        .about-section { padding: 80px 0; }
+        .page-title { font-size: 3.5rem; margin-bottom: 30px; }
+        .page-title span { color: var(--accent); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .sidebar-box {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+
+        .sidebar-box h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .experience-item {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .experience-item h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        .experience-item span { font-size: 0.85rem; color: #888; font-family: monospace; }
+
+        footer { padding: 60px 0; text-align: center; border-top: 1px solid #333; margin-top: 50px; color: var(--text-secondary); }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .page-title { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <a href="index.html" class="logo">Sagnik<span>.dev</span></a>
+        <nav>
+            <ul>
+                <li><a href="index.html#about" style="color: var(--accent);">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="about-section">
+        <h1 class="page-title">About <span>Me.</span></h1>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Hello! I'm Sagnik, a student currently navigating the <strong>ICSE Class 10</strong> curriculum while building a foundation in software development. My passion for coding ignited with Java, where I discovered the power of Object-Oriented Programming.</p>
+
+                <p>I focus on creating logic-driven applications, ranging from educational tools like <em>EduCalc</em> to visualization software like <em>SortViz</em>. I enjoy the challenge of bridging school-level logic with modern web technologies like React and Spring Boot.</p>
+
+                <p>When I'm not studying for my board exams, I'm usually exploring new APIs or refining my understanding of algorithms and data structures.</p>
+            </div>
+
+            <div class="sidebar-box">
+                <h3>Education & Journey</h3>
+
+                <div class="experience-item">
+                    <h4>ICSE Board (Class 10)</h4>
+                    <span>2024 - 2025</span>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Focusing on Computer Applications and Advanced Java.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Self-Taught Developer</h4>
+                    <span>2020 - Present</span>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Learning Web Development, React, and Backend APIs.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sagnik.dev | Built for ICSE Portfolio</p>
+    </footer>
+</div>
+
+</body>
+</html>

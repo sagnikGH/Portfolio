@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Dashboard | Project Details</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #c0c0c0;
+            --accent: #ff00ff;
+            --code-bg: #0d0d0d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+    max-width: 1200px; /* Increased from 1000px for a wider feel */
+    margin: 0 auto;
+    padding: 0 40px; /* Added more side padding for large screens */
+} { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .tags { display: flex; gap: 10px; margin-bottom: 30px; }
+        .tags span {
+            background: rgba(255, 0, 255, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+        }
+
+        .description { margin-bottom: 40px; color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* Code Block Container */
+        .code-container {
+            position: relative;
+            background: var(--code-bg);
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: #252525;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-header span { font-family: monospace; font-size: 0.9rem; color: #888; }
+
+        .copy-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .copy-btn:hover { background: #fff; }
+
+        pre {
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #9cdcfe; /* React/JS blue */
+        }
+
+        .keyword { color: #c586c0; }
+        .function { color: #dcdcaa; }
+        .comment { color: #6a9955; }
+        .string { color: #ce9178; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="projects.html" class="back-link">← Back to Projects</a>
+
+    <header>
+        <h1>Nexus Dashboard</h1>
+        <div class="tags">
+            <span>REACT</span>
+            <span>FIREBASE</span>
+            <span>STATE MANAGEMENT</span>
+        </div>
+    </header>
+
+    <section class="description">
+        <p>Nexus is a <strong>Task Management System</strong> concept. It uses a real-time database to sync tasks across different users. The goal was to create a clutter-free UI that helps small teams focus on their most urgent work.</p>
+    </section>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>App.js (React Component)</span>
+            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+        </div>
+        <pre id="code-content">
+<span class="keyword">import</span> React, { useState, useEffect } <span class="keyword">from</span> <span class="string">'react'</span>;
+<span class="keyword">import</span> { db } <span class="keyword">from</span> <span class="string">'./firebase-config'</span>;
+
+<span class="comment">// Main Dashboard Component</span>
+<span class="keyword">function</span> <span class="function">NexusDashboard</span>() {
+    <span class="keyword">const</span> [tasks, setTasks] = <span class="function">useState</span>([]);
+    <span class="keyword">const</span> [input, setInput] = <span class="function">useState</span>(<span class="string">''</span>);
+
+    <span class="comment">// Add task to state and cloud</span>
+    <span class="keyword">const</span> <span class="function">addTask</span> = (e) => {
+        e.<span class="function">preventDefault</span>();
+        setTasks([...tasks, { text: input, completed: <span class="keyword">false</span> }]);
+        setInput(<span class="string">''</span>);
+    };
+
+    <span class="keyword">return</span> (
+        &lt;<span class="keyword">div</span> className=<span class="string">"dashboard-container"</span>&gt;
+            &lt;<span class="keyword">h1</span>&gt;Nexus Tasks&lt;/<span class="keyword">h1</span>&gt;
+            &lt;<span class="keyword">form</span>&gt;
+                &lt;<span class="keyword">input</span>
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    placeholder=<span class="string">"Enter a new task..."</span>
+                /&gt;
+                &lt;<span class="keyword">button</span> onClick={addTask}&gt;Add Task&lt;/<span class="keyword">button</span>&gt;
+            &lt;/<span class="keyword">form</span>&gt;
+
+            &lt;<span class="keyword">ul</span>&gt;
+                {tasks.map(task => (
+                    &lt;<span class="keyword">li</span>&gt;{task.text}&lt;/<span class="keyword">li</span>&gt;
+                ))}
+            &lt;/<span class="keyword">ul</span>&gt;
+        &lt;/<span class="keyword">div</span>&gt;
+    );
+}
+
+<span class="keyword">export default</span> NexusDashboard;
+</pre>
+    </div>
+</div>
+
+<script>
+    function copyCode() {
+        const code = document.getElementById('code-content').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy Code', 2000);
+        });
+    }
+</script>
+</body>
+</html>

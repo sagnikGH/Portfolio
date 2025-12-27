@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velo API | Project Details</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #c0c0c0;
+            --accent: #ff00ff;
+            --code-bg: #0d0d0d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+    max-width: 1200px; /* Increased from 1000px for a wider feel */
+    margin: 0 auto;
+    padding: 0 40px; /* Added more side padding for large screens */
+} { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .tags { display: flex; gap: 10px; margin-bottom: 30px; }
+        .tags span {
+            background: rgba(255, 0, 255, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+        }
+
+        .description { margin-bottom: 40px; color: var(--text-secondary); font-size: 1.1rem; }
+
+        .code-container {
+            position: relative;
+            background: var(--code-bg);
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: #252525;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-header span { font-family: monospace; font-size: 0.9rem; color: #888; }
+
+        .copy-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        pre {
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #d4d4d4;
+        }
+
+        .keyword { color: #569cd6; }
+        .annotation { color: #dcdcaa; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="projects.html" class="back-link">← Back to Projects</a>
+
+    <header>
+        <h1>Velo Delivery API</h1>
+        <div class="tags">
+            <span>SPRING BOOT</span>
+            <span>REST API</span>
+            <span>BACKEND</span>
+        </div>
+    </header>
+
+    <section class="description">
+        <p>Velo is a high-performance backend system designed to handle logistics and courier tracking. It demonstrates how <strong>Object-Oriented Programming (OOP)</strong> can be applied to manage real-world data like delivery status and driver coordinates.</p>
+    </section>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span>DeliveryController.java</span>
+            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+        </div>
+        <pre id="code-content">
+<span class="keyword">package</span> com.velo.api;
+
+<span class="keyword">import</span> org.springframework.web.bind.annotation.*;
+<span class="keyword">import</span> java.util.List;
+
+<span class="annotation">@RestController</span>
+<span class="annotation">@RequestMapping</span>(<span class="string">"/api/delivery"</span>)
+<span class="keyword">public class</span> DeliveryController {
+
+    <span class="comment">// API endpoint to get delivery status by ID</span>
+    <span class="annotation">@GetMapping</span>(<span class="string">"/{id}"</span>)
+    <span class="keyword">public</span> Delivery <span class="annotation">getDeliveryStatus</span>(<span class="annotation">@PathVariable</span> String id) {
+        <span class="comment">// ICSE Logic: Objects and Classes in action</span>
+        Delivery d = <span class="keyword">new</span> Delivery();
+        d.setId(id);
+        d.setStatus(<span class="string">"IN_TRANSIT"</span>);
+        d.setEstimatedArrival(<span class="string">"15 mins"</span>);
+
+        <span class="keyword">return</span> d;
+    }
+
+    <span class="annotation">@PostMapping</span>(<span class="string">"/update"</span>)
+    <span class="keyword">public</span> String <span class="annotation">updateLocation</span>(<span class="annotation">@RequestBody</span> Location loc) {
+        <span class="comment">// Logic for Geofencing would go here</span>
+        System.out.println(<span class="string">"Driver at: "</span> + loc.getLat() + <span class="string">", "</span> + loc.getLng());
+        <span class="keyword">return</span> <span class="string">"Location updated successfully!"</span>;
+    }
+}
+</pre>
+    </div>
+</div>
+
+<script>
+    function copyCode() {
+        const code = document.getElementById('code-content').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.innerText = 'Copied!';
+            setTimeout(() => btn.innerText = 'Copy Code', 2000);
+        });
+    }
+</script>
+</body>
+</html>
