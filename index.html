@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="x9BVSVizX-ArN_xD7NCGJ-7tVMJpCjRmAqp_PxICBm0" />
     <title>Sagnik.dev | ICSE Developer</title>
     <style>
         :root {
@@ -26,14 +27,10 @@
         }
 
         .container {
-    max-width: 1200px; /* Increased from 1000px for a wider feel */
-    margin: 0 auto;
-    padding: 0 40px; /* Added more side padding for large screens */
-} {
-    max-width: 1200px; /* Increased from 1000px for a wider feel */
-    margin: 0 auto;
-    padding: 0 40px; /* Added more side padding for large screens */
-}
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
 
         /* Navigation */
         header {
@@ -79,7 +76,7 @@
             font-size: 2rem;
             margin: 60px 0 40px;
             position: relative;
-            display: inline-block; /* Crucial: This makes the element only as wide as the text */
+            display: inline-block;
         }
 
         .section-title::after {
@@ -89,8 +86,8 @@
             height: 4px;
             background: var(--accent);
             bottom: -10px;
-            left: 50%;            /* Move the start to the center */
-            transform: translateX(-50%); /* Pull it back by half its width to perfectly center it */
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -112,9 +109,9 @@
         .tech-stack { display: flex; gap: 10px; flex-wrap: wrap; }
         .tech-stack span { font-size: 0.7rem; font-family: monospace; background: #252525; padding: 4px 8px; border-radius: 4px; }
 
-        /* Skills Section - Centralized and Widened */
+        /* Skills Section */
         #skills {
-            text-align: center; /* Centers the "Technical Skills" title */
+            text-align: center;
             padding: 80px 0;
         }
 
@@ -122,8 +119,8 @@
             display: flex;
             flex-direction: column;
             gap: 25px;
-            max-width: 900px; /* Increased from 600px for a wider feel */
-            margin: 0 auto;   /* Centers the entire list in the container */
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .skill-item {
@@ -131,7 +128,7 @@
             align-items: center;
             gap: 25px;
             background: var(--card-bg);
-            padding: 20px 30px; /* More padding for a premium look */
+            padding: 20px 30px;
             border-radius: 12px;
             border: 1px solid #333;
             transition: 0.3s ease;
@@ -139,18 +136,18 @@
 
         .skill-item:hover {
             border-color: var(--accent);
-            transform: scale(1.02); /* Slight pop effect on hover */
+            transform: scale(1.02);
         }
 
         .skill-name {
-            width: 140px; /* Widened to fit longer names comfortably */
+            width: 140px;
             font-weight: 600;
             text-align: left;
         }
 
         .skill-bar-container {
-            flex-grow: 1; /* Makes the bar take up all remaining space */
-            height: 10px; /* Slightly thicker bar */
+            flex-grow: 1;
+            height: 10px;
             background: #333;
             border-radius: 10px;
             overflow: hidden;
@@ -159,7 +156,7 @@
         .skill-bar {
             height: 100%;
             background: var(--accent);
-            box-shadow: 0 0 15px var(--accent); /* Stronger neon glow */
+            box-shadow: 0 0 15px var(--accent);
             border-radius: 10px;
         }
 
